@@ -199,14 +199,15 @@
             });
         });
     };
+
+    fetchId();
     
     if (window.location.host === dockHost) {
-        updateUsers();
+        setTimeout(updateUsers, 3000);
         return;
     }
     
     //removeUserHash();
-    fetchId();
     findUsers();
     setTimeout(postUsers, 2000);
     
