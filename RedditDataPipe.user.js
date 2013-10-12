@@ -62,14 +62,8 @@
     var findLinks = function() {
         var links = [];
 
-        console.log("here");
-
         $('div.thing.link').each(function() {
-            console.log("test1")
-            console.log(this);
             var el = $(this);
-
-            console.log("there");
 
             var thumb       = '';
             var thumbImage  = el.find('a.thumbnail img');
@@ -85,8 +79,6 @@
 
             var ups     = Number(el.attr('data-ups'));
             var downs   = Number(el.attr('data-downs'));
-
-            console.log(el.attr('data-fullname'));
 
             links.push({
                 reddit_id:      el.attr('data-fullname'),
@@ -259,8 +251,10 @@
     
     removeUserHash();
     //findUsers();
-    console.log('test');
-    console.log(findLinks());
+    var links = findLinks();
+    _.each(links, function(l) {
+        console.log(JSON.stringify(l));
+    });
     //setTimeout(postUsers, 2000);
     
 })();
