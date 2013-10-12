@@ -62,8 +62,12 @@
     var findLinks = function() {
         var links = [];
 
+        console.log("here");
+
         $('div.thing.link').each(function() {
             this = $(this);
+
+            console.log("there");
 
             var thumb       = '';
             var thumbImage  = this.find('a.thumbnail img');
