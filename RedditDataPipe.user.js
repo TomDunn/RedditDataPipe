@@ -251,7 +251,7 @@
     
     removeUserHash();
     //findUsers();
-    findLinks();
+    console.log(findLinks());
     //setTimeout(postUsers, 2000);
     
 })();
