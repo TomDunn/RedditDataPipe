@@ -62,7 +62,7 @@
     var findLinks = function() {
         var links = [];
 
-        $('div.think.link').each(function() {
+        $('div.thing.link').each(function() {
             this = $(this);
 
             var thumb       = '';
