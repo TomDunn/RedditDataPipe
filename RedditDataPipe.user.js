@@ -80,6 +80,8 @@
             var ups     = Number(this.attr('data-ups'));
             var downs   = Number(this.attr('data-downs'));
 
+            console.log(this.attr('data-fullname'));
+
             links.push({
                 reddit_id:      this.attr('data-fullname'),
                 domain:         this.find('span.domain a').text(),
