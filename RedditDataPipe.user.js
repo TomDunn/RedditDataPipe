@@ -80,6 +80,9 @@
             var ups     = Number(el.attr('data-ups'));
             var downs   = Number(el.attr('data-downs'));
 
+            var created = new Date(el.find('time:first-child').attr('datetime'));
+            created = create.getTime() / 1000.0;
+
             links.push({
                 reddit_id:      el.attr('data-fullname'),
                 domain:         el.find('span.domain a').text(),
@@ -89,7 +92,7 @@
                 thumbnail:      thumb,
                 authorname:     el.find('a.author').text(),
                 sub_name:       el.find('a.subreddit').text(),
-                created:        el.find('time:first-child').attr('datetime'),
+                created:        created,
                 score:          ups - downs,
                 downs:          downs,
                 ups:            ups,
