@@ -58,6 +58,48 @@
         
         setUserHash(users);
     };
+
+    var findLinks = function() {
+        var links = [];
+
+        $('div.think.link').each(function() {
+            this = $(this);
+
+            var thumb       = '';
+            var thumbImage  = this.find('a.thumbnail img');
+            var thumbSelf   = this.find('a.thumbnail.self');
+
+            if (thumbImage.length) {
+                thumb = thumbImage.attr('src');
+            }
+
+            if (thumbSelf.length) {
+                thumb = 'self';
+            }
+
+            var ups     = Number(this.attr('data-ups'));
+            var downs   = Number(this.attr('data-downs'));
+
+            links.push({
+                reddit_id:      this.attr('data-fullname'),
+                domain:         this.find('span.domain a').text(),
+                url:            this.find('p.title a.title').attr('href'),
+                permalink:      this.find('a.commments').attr('href'),
+                title:          this.find('p.title a.title').text(),
+                thumbnail:      thumb,
+                authorname:     this.find('a.author').text(),
+                sub_name:       this.find('a.subreddit').text(),
+                created:        this.find('time:first-child').attr('datetime'),
+                score:          ups - downs,
+                downs:          downs,
+                ups:            ups,
+                is_self:        thumb == 'self',
+                over_18:        this.find('nsfw-stamp').length > 0
+            });
+        });
+
+        return links;
+    };
     
     var jsonReq = function(options) {
         var method = options.method || 'GET';
@@ -207,8 +249,9 @@
         return;
     }
     
-    //removeUserHash();
-    findUsers();
-    setTimeout(postUsers, 2000);
+    removeUserHash();
+    //findUsers();
+    findLinks();
+    //setTimeout(postUsers, 2000);
     
 })();
