@@ -66,7 +66,7 @@
 
         $('div.thing.link').each(function() {
             console.log("test1");
-            this = $(this);
+            var this = $(this);
 
             console.log("there");
 
