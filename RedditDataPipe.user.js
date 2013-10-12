@@ -49,7 +49,7 @@
         users = getUserHash();
         
         $('.author').each(function() {
-            var author = $(this).text();
+            var author = $(el).text();
             
             if (!users[author]) {
                 users[author] = 1;
@@ -65,14 +65,15 @@
         console.log("here");
 
         $('div.thing.link').each(function() {
-            console.log("test1");
-            var this = $(this);
+            console.log("test1")
+            console.log(this);
+            var el = $(this);
 
             console.log("there");
 
             var thumb       = '';
-            var thumbImage  = this.find('a.thumbnail img');
-            var thumbSelf   = this.find('a.thumbnail.self');
+            var thumbImage  = el.find('a.thumbnail img');
+            var thumbSelf   = el.find('a.thumbnail.self');
 
             if (thumbImage.length) {
                 thumb = thumbImage.attr('src');
@@ -82,26 +83,26 @@
                 thumb = 'self';
             }
 
-            var ups     = Number(this.attr('data-ups'));
-            var downs   = Number(this.attr('data-downs'));
+            var ups     = Number(el.attr('data-ups'));
+            var downs   = Number(el.attr('data-downs'));
 
-            console.log(this.attr('data-fullname'));
+            console.log(el.attr('data-fullname'));
 
             links.push({
-                reddit_id:      this.attr('data-fullname'),
-                domain:         this.find('span.domain a').text(),
-                url:            this.find('p.title a.title').attr('href'),
-                permalink:      this.find('a.commments').attr('href'),
-                title:          this.find('p.title a.title').text(),
+                reddit_id:      el.attr('data-fullname'),
+                domain:         el.find('span.domain a').text(),
+                url:            el.find('p.title a.title').attr('href'),
+                permalink:      el.find('a.commments').attr('href'),
+                title:          el.find('p.title a.title').text(),
                 thumbnail:      thumb,
-                authorname:     this.find('a.author').text(),
-                sub_name:       this.find('a.subreddit').text(),
-                created:        this.find('time:first-child').attr('datetime'),
+                authorname:     el.find('a.author').text(),
+                sub_name:       el.find('a.subreddit').text(),
+                created:        el.find('time:first-child').attr('datetime'),
                 score:          ups - downs,
                 downs:          downs,
                 ups:            ups,
                 is_self:        thumb == 'self',
-                over_18:        this.find('nsfw-stamp').length > 0
+                over_18:        el.find('nsfw-stamp').length > 0
             });
         });
 
