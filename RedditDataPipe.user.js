@@ -81,7 +81,7 @@
             var downs   = Number(el.attr('data-downs'));
 
             var created = new Date(el.find('time:first-child').attr('datetime'));
-            created = create.getTime() / 1000.0;
+            created = created.getTime() / 1000.0;
 
             links.push({
                 reddit_id:      el.attr('data-fullname'),
