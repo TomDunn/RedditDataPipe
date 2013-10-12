@@ -168,6 +168,23 @@
         });
         
     };
+
+    var postLinks = function(links) {
+        var data = {links: links};
+
+        jsonReq({
+            method: 'POST',
+            url:    'http://localhost:5000/links',
+            data:   data,
+            success: function(data, resp) {
+                console.log('post link success');
+            },
+            error: function(data, resp) {
+                console.log('post link err');
+                console.log(resp);
+            }
+        });
+    };
     
     var getUsers = function(pendingUsers, doneUsers, done) {
         var tick = function() {
@@ -255,6 +272,7 @@
     _.each(links, function(l) {
         console.log(JSON.stringify(l));
     });
+    postLinks(links);
     //setTimeout(postUsers, 2000);
     
 })();
