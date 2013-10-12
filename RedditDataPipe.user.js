@@ -82,6 +82,7 @@
 
             var created = new Date(el.find('time:first-child').attr('datetime'));
             created = created.getTime() / 1000.0;
+            created = created || 0.0;
 
             links.push({
                 reddit_id:      el.attr('data-fullname'),
