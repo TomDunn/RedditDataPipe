@@ -61,6 +61,11 @@
 
     var findLinks = function() {
         var links = [];
+        var defaultSubName = '';
+
+        if (window.location.href.indexOf('reddit.com/r/') > -1 ) {
+            defaultSubName = window.location.href.split('reddit.com/r/')[1].split('/')[0];
+        }
 
         $('div.thing.link').each(function() {
             var el = $(this);
@@ -92,7 +97,7 @@
                 title:          el.find('p.title a.title').text(),
                 thumbnail:      thumb,
                 authorname:     el.find('a.author').text(),
-                sub_name:       el.find('a.subreddit').text(),
+                sub_name:       el.find('a.subreddit').text() || defaultSubName,
                 created:        created,
                 score:          ups - downs,
                 downs:          downs,
