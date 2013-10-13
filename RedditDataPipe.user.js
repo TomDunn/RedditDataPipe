@@ -289,7 +289,7 @@
         continueRandom();
     });
 
-    if ($.url().param().continue == "Y") {
+    if (window.location.href.indexOf('continue=Y') !== -1) {
         console.log('continuing');
         continueRandom();
     }
