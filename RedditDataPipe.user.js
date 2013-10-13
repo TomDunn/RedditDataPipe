@@ -282,7 +282,7 @@
     var continueRandom = function() {
         setTimeout(function() {
             window.location.href="http://reddit.com/r/random?limit=100&continue=Y";
-        }, 5000);
+        }, 8000);
     };
 
     $('#start_teh_spider').click(function() {
