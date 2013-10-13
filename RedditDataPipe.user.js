@@ -270,13 +270,17 @@
         return;
     }
     
-    removeUserHash();
+    //removeUserHash();
     //findUsers();
     var links = findLinks();
-    _.each(links, function(l) {
-        console.log(JSON.stringify(l));
-    });
     postLinks(links);
     //setTimeout(postUsers, 2000);
+    $('.bottommenu:last-child').append(
+        '<p><a href="#" id="start_teh_spider">/╲/\╭ºoꍘoº╮/\╱\ </a></p>'
+    );
+
+    $('#start_teh_spider').click(function() {
+        alert('starting...');
+    });
     
 })();
