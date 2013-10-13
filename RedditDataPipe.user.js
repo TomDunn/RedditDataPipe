@@ -288,5 +288,10 @@
     $('#start_teh_spider').click(function() {
         continueRandom();
     });
+
+    if ($.url().param().continue == "Y") {
+        console.log('continuing');
+        continueRandom();
+    }
     
 })();
