@@ -38,7 +38,7 @@
         }
         
         jsonReq({
-            url: 'http://localhost:5000/get_id',
+            url: 'http://192.168.1.25:5000/get_id',
             success: function(data, resp) {
                 saveId(data.id);
             }
@@ -159,7 +159,7 @@
         
         jsonReq({
             method: 'POST',
-            url:    'http://localhost:5000/new_users',
+            url:    'http://192.168.1.25:5000/new_users',
             data:   data,
             success: function(data, resp) {
                 console.log(data);
@@ -183,7 +183,7 @@
 
         jsonReq({
             method: 'POST',
-            url:    'http://localhost:5000/links',
+            url:    'http://192.168.1.25:5000/links',
             data:   data,
             success: function(data, resp) {
                 console.log('post link success');
@@ -229,7 +229,7 @@
     var makeBatch = function(cb) {
         jsonReq({
             method: 'POST',
-            url: 'http://localhost:5000/make_batch',
+            url: 'http://192.168.1.25:5000/make_batch',
             success: function(data, resp) {
                 console.log('suc');
                 cb(data.users);
@@ -243,7 +243,7 @@
     var putBatch = function(users, cb) {
         jsonReq({
             method: 'PUT',
-            url: 'http://localhost:5000/put_batch',
+            url: 'http://192.168.1.25:5000/put_batch',
             data: {users: users},
             success: function(data, resp) {
                 console.log(data);
