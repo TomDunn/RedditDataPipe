@@ -10,6 +10,7 @@
 // ==/UserScript==
 
 (function() {
+    var shouldContinue = false;
     var console = unsafeWindow.console;
     var userKey = 'RedditDataPipe_UserKey';
     var dockHost = 'tomdunn.net';
@@ -187,6 +188,7 @@
             data:   data,
             success: function(data, resp) {
                 console.log('post link success');
+                shouldContinue = true;
             },
             error: function(data, resp) {
                 console.log('post link err');
@@ -215,6 +217,7 @@
                     console.log(data);
                     
                     if (400 <= data.status < 500) {
+                        console.log('400 level');
                         doneUsers.push({name: user, error: true});
                     } else {
                         pendingUsers.push(user);
@@ -286,12 +289,18 @@
 
     var continueRandom = function() {
         setTimeout(function() {
-            window.location.href="http://reddit.com/r/random?limit=100&continue=Y";
-        }, 8000);
+            if (shouldContinue) {
+                window.location.href="http://reddit.com/r/random?limit=100&continue=Y";
+            } else {
+                console.log('nope');
+                continueRandom();
+            }
+        }, 2000);
     };
 
     $('#start_teh_spider').click(function() {
         continueRandom();
+        shouldContinue = true;
     });
 
     if (window.location.href.indexOf('continue=Y') !== -1) {
